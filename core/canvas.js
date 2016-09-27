@@ -2,9 +2,9 @@
  * Created by eason on 16-9-26.
  */
 'use strict';
-const BgColor = require('./color').BgColor;
-const FontColor = require('./color').FontColor;
-const Light = require('./color').Light;
+const BgColor = require('./../define/color').BgColor;
+const FontColor = require('./../define/color').FontColor;
+const Light = require('./../define/color').Light;
 const Bridge = require('./bridge');
 
 class Canvas {
@@ -39,13 +39,23 @@ class Canvas {
         this.canvas[y][x][3]=light;
     }
 
-    draw(){
-        setInterval((o)=>{
-            this.setPoint(o.v%this.canvas[0].length==0?this.canvas[0].length-1:o.v%this.canvas[0].length-1,0,'  ',FontColor.black,BgColor.white,Light.true);
-            this.setPoint(o.v%this.canvas[0].length,0,'  ',FontColor.white,BgColor.black,Light.true);
-            o.v++;
-            this.bridge.input(this.canvas);
-        },1000,{v:0});
+    render(display){
+        if(!display.visible) return;
+        let queue = [];
+        queue.push(display);
+        while(queue.length!==0){
+            let ele = stack.unshift();
+            for(let i in ele.array){
+                for(let j in ele.array[i]){
+                    this.canvas[ele.x + i][ele.y + j] = ele.array[i][j];
+                }
+            }
+            if(!display.children||display.children.length===0) break;
+            for(let i in display.children){
+                queue.push(display.children[i]);
+            }
+        }
+        this.bridge.input(this.canvas);
     }
 }
 
