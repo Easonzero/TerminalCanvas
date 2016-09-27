@@ -42,17 +42,21 @@ class Canvas {
     render(display){
         if(!display.visible) return;
         let queue = [];
-        queue.push(display);
+        queue.unshift(display);
         while(queue.length!==0){
-            let ele = stack.unshift();
-            for(let i in ele.array){
-                for(let j in ele.array[i]){
-                    this.canvas[ele.x + i][ele.y + j] = ele.array[i][j];
+            let ele = queue.pop();
+            let i = 0;
+            while(i < ele.array.length){
+                let j = 0;
+                while(j < ele.array[i].length){
+                    this.setPoint(ele.x + j,ele.y + i,ele.array[i][j],ele.fontColor,ele.bgColor,ele.light);
+                    j++;
                 }
+                i++;
             }
             if(!display.children||display.children.length===0) break;
             for(let i in display.children){
-                queue.push(display.children[i]);
+                queue.unshift(display.children[i]);
             }
         }
         this.bridge.input(this.canvas);

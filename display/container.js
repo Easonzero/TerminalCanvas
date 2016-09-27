@@ -5,11 +5,10 @@ let DisplayObject = require('./display-object');
 
 class Container extends DisplayObject{
     constructor(height,width){
-        this.height = height;
-        this.width = width;
+        super(height,width);
         this.children = [];
     }
-    get children(){}
+    get children(){ return this.children;}
     set children(children){
         if(children.length!==0)
             return;
@@ -18,6 +17,7 @@ class Container extends DisplayObject{
     addChild(child){
         if(!child) return;
         this.children.push(child);
+        child.parent = this;
     }
 
     removeChild(index){
@@ -29,4 +29,4 @@ class Container extends DisplayObject{
     }
 }
 
-module.export = Container;
+module.exports = Container;
