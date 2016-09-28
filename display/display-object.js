@@ -1,12 +1,14 @@
 /**
  * Created by eason on 16-9-27.
  */
+const EventEmitter = require('events').EventEmitter;
 const BgColor = require('./../define/color').BgColor;
 const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
 
 class DisplayObject extends EventEmitter{
     constructor(height,width){
+        super();
         this.x = 0;
         this.y = 0;
 

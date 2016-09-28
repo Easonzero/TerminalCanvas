@@ -3,8 +3,11 @@
  */
 'use strict';
 
+const Setting = require('../build/Release/core.node');
+
 class Bridge {
-    constructor(){}
+    constructor(){
+    }
 
     input(canvas){
         this.clear();
@@ -21,13 +24,14 @@ class Bridge {
     }
 
     readin(callback){
+        Setting.initTermianl();
         process.stdin.setEncoding('utf-8');
-        process.stdin.on('readable', function(chunk) {
-            var chunk = process.stdin.read();
-            if (chunk !== null) {
-                chunk = chunk.substr(0,chunk.length-1);
+        process.stdin.on('data', function(chunk) {
+            // var chunk = process.stdin.read();
+            // if (chunk !== null) {
+            //     chunk = chunk.substr(0,chunk.length-1);
                 callback(chunk);
-            }
+            //}
         });
     }
 

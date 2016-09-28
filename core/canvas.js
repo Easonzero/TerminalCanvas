@@ -2,6 +2,7 @@
  * Created by eason on 16-9-26.
  */
 'use strict';
+const EventEmitter = require('events').EventEmitter;
 const BgColor = require('./../define/color').BgColor;
 const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
@@ -9,6 +10,7 @@ const Bridge = require('./bridge');
 
 class Canvas extends EventEmitter{
     constructor(height,width){
+        super();
         this.canvas = [];
         this.emptyGird = '  ';
         this.bridge = new Bridge();
