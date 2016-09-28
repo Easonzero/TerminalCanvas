@@ -4,6 +4,8 @@
 'use strict';
 
 class Bridge {
+    constructor(){}
+
     input(canvas){
         this.clear();
         for(let i of canvas){
@@ -16,6 +18,17 @@ class Bridge {
 
     output(char,font,bg,light){
         process.stdout.write(`\x1b[${font};${bg};${light}m${char}\x1b[0m`);
+    }
+
+    readin(callback){
+        process.stdin.setEncoding('utf-8');
+        process.stdin.on('readable', function(chunk) {
+            var chunk = process.stdin.read();
+            if (chunk !== null) {
+                chunk = chunk.substr(0,chunk.length-1);
+                callback(chunk);
+            }
+        });
     }
 
     clear(){

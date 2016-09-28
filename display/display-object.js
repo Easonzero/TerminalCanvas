@@ -5,7 +5,7 @@ const BgColor = require('./../define/color').BgColor;
 const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
 
-class DisplayObject{
+class DisplayObject extends EventEmitter{
     constructor(height,width){
         this.x = 0;
         this.y = 0;

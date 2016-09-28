@@ -6,11 +6,13 @@ const Canvas = require('./core/canvas');
 const DisplayObject = require('./display/display-object');
 const BgColor = require('./define/color').BgColor;
 
-let canvas = new Canvas(5,10);
+let canvas = new Canvas(33,33);
 
 let object = new DisplayObject(2,2);
 object.x = 1;
 object.y = 1;
 object.bgColor = BgColor.cyan;
 
-canvas.render(object);
+setInterval(()=>{
+    canvas.render(object);
+},1000);

@@ -7,7 +7,7 @@ const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
 const Bridge = require('./bridge');
 
-class Canvas {
+class Canvas extends EventEmitter{
     constructor(height,width){
         this.canvas = [];
         this.emptyGird = '  ';
@@ -18,13 +18,16 @@ class Canvas {
                 this.canvas[i][j]=[this.emptyGird,FontColor.black,BgColor.white,Light.true];
             }
         }
+        this.bridge.readin((chunk)=>{
+            this.emit('onKeyDown',chunk);
+        });
     }
 
     setPoint(x,y,char,font,bg,light){
         if(x>this.canvas[0].length-1||y>this.canvas.length-1) return;
         let result = '';
         char += '';
-        if(char.length>this.emptyGird.length) char.length=this.emptyGird.length;
+        if(char.length>this.emptyGird.length) result = char.substr(0,this.emptyGird.length);
         else{
             let left='',right='';
             for(let i=0;i<this.emptyGird.length-char.length;i++){
