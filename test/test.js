@@ -14,13 +14,13 @@ let container = new Container(33,33);
 
 let graphics = new Graphics(11,11);
 graphics.setStyle(FontColor.black,BgColor.cyan);
-graphics.drawLine(0,0,10,10);
+graphics.drawLine(0,0,5.4,10.3);
 
 let line = graphics.toDisplayObject();
 container.addChild(line);
 
-line.x = 1;
-line.y = 1;
+line.x = 1.3;
+line.y = 1.6;
 line.on('onKeyDown',(key)=>{
     switch (key){
         case 'w':
@@ -41,4 +41,4 @@ line.on('onKeyDown',(key)=>{
 
 setInterval(()=>{
    canvas.render(container);
-},300);
+},200);

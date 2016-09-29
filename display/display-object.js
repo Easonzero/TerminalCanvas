@@ -9,8 +9,13 @@ const Light = require('./../define/color').Light;
 class DisplayObject extends EventEmitter{
     constructor(height,width){
         super();
-        this.x = 0;
-        this.y = 0;
+        if(height<0||width<0) {
+            height=0;width=0;
+        }
+        height = Math.round(height);
+        width = Math.round(width);
+        this._x = 0;
+        this._y = 0;
 
         this.fontColor = FontColor.black;
         this.bgColor = BgColor.white;
@@ -32,6 +37,11 @@ class DisplayObject extends EventEmitter{
             i++;
         }
     }
+
+    set x(x){this._x = Math.round(x);}
+    get x(){return this._x}
+    set y(y){this._y = Math.round(y);}
+    get y(){return this._y}
 }
 
 module.exports = DisplayObject;

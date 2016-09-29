@@ -17,6 +17,8 @@ class Graphics {
     }
 
     drawPoint(x,y,char){
+        x = Math.round(x);
+        y = Math.round(y);
         this.o.array[y][x] = char||'';
     }
 
