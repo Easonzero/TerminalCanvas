@@ -1,10 +1,10 @@
 # TerminalCanvas
 一个用于在linux终端上创建画布的node模块
 
-###INSTALL
+###Installation
 * npm install canvas-terminal [-g]
 
-###GET START
+###Getting Started
 
 ```javascript
 const Canvas = require('../index').Canvas;
