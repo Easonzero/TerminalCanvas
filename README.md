@@ -51,7 +51,7 @@ setInterval(()=>{
 * 通过`Graphics`类创建出各种图像数据,并放入`Container`容器实例中
 * 最后将`Container`实例交给`Canvas`实例渲染即可.
 
-###**API**
+###API
 ####`Canvas` extends `EventEmitter`
 * 属性
 
@@ -88,7 +88,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####**`Container` extends `DisplayObject`**
+####`Container` extends `DisplayObject`
 * 属性
 
 <table>
@@ -124,7 +124,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####**`Graphics`**
+####`Graphics`
 
 * 方法
 
@@ -156,7 +156,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####**`DisplayObject` extends `EventEmitter`**
+####`DisplayObject` extends `EventEmitter`
 * 属性
 
 <table>
@@ -207,7 +207,7 @@ setInterval(()=>{
     </tr>    
 </table>
 
-####**`Color`**
+####`Color`
 <table>
     <tr>
         <td>FontColor</td>
