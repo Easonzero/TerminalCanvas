@@ -14,6 +14,7 @@ void initTermianl(const FunctionCallbackInfo<Value>& args) {
   tcgetattr(0,&stored_settings);
   new_settings = stored_settings;
   new_settings.c_lflag &= (~ICANON);
+  new_settings.c_lflag &= (~ECHO);
   new_settings.c_cc[VTIME] = 0;
   tcgetattr(0,&stored_settings);
   new_settings.c_cc[VMIN] = 1;
