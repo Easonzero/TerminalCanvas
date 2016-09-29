@@ -1,0 +1,28 @@
+{
+  "name": "terminal-canvas",
+  "version": "1.0.0",
+  "description": "A module that is used to create a canvas of the terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test",
+    "rebuild": "node-gyp rebuild",
+    "install": "node-gyp configure&&node-gyp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a451114984/TerminalCanvas.git"
+  },
+  "keywords": [
+    "node","canvas","terminal","shell","linux"
+  ],
+  "author": "eason",
+  "license": "ISC",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/a451114984/TerminalCanvas/issues"
+  },
+  "homepage": "https://github.com/a451114984/TerminalCanvas#readme",
+  "dependencies": {
+    "node-gyp":"3.4.0"
+  }
+}

@@ -2,10 +2,10 @@
  * Created by eason on 16-9-26.
  */
 'use strict';
-const Canvas = require('./core/canvas');
-const Graphics = require('./graphics/graphics');
-const BgColor = require('./define/color').BgColor;
-const FontColor = require('./define/color').FontColor;
+const Canvas = require('../index').Canvas;
+const Graphics = require('../index').Graphics;
+const BgColor = require('../index').BgColor;
+const FontColor = require('../index').FontColor;
 
 
 let canvas = new Canvas(33,33);
