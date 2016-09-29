@@ -23,9 +23,9 @@ class Canvas extends EventEmitter{
             while(queue.length!==0){
                 let ele = queue.pop();
                 ele.emit('onKeyDown',chunk);
-                if(!this.display.children||this.display.children.length===0) break;
-                for(let i in this.display.children){
-                    queue.unshift(this.display.children[i]);
+                if(!ele.children||ele.children.length===0) break;
+                for(let i in ele.children){
+                    queue.unshift(ele.children[i]);
                 }
             }
         });
@@ -89,11 +89,12 @@ class Canvas extends EventEmitter{
                 }
                 i++;
             }
-            if(!display.children||display.children.length===0) break;
-            for(let i in display.children){
-                queue.unshift(display.children[i]);
+            if(!ele.children||ele.children.length===0) break;
+            for(let i in ele.children){
+                queue.unshift(ele.children[i]);
             }
         }
+
         this.bridge.input(this.canvas);
     }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "terminal-canvas",
+  "name": "canvas-terminal",
   "version": "1.0.0",
   "description": "A module that is used to create a canvas of the terminal",
   "main": "index.js",
@@ -15,7 +15,7 @@
   "keywords": [
     "node","canvas","terminal","shell","linux"
   ],
-  "author": "eason",
+  "author": "a451114984",
   "license": "ISC",
   "gypfile": true,
   "bugs": {

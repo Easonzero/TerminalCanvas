@@ -3,16 +3,22 @@
  */
 'use strict';
 const Canvas = require('../index').Canvas;
+const Container = require('../index').Container;
 const Graphics = require('../index').Graphics;
 const BgColor = require('../index').BgColor;
 const FontColor = require('../index').FontColor;
 
 
 let canvas = new Canvas(33,33);
+let container = new Container(33,33);
+
 let graphics = new Graphics(11,11);
 graphics.setStyle(FontColor.black,BgColor.cyan);
 graphics.drawLine(0,0,10,10);
+
 let line = graphics.toDisplayObject();
+container.addChild(line);
+
 line.x = 1;
 line.y = 1;
 line.on('onKeyDown',(key)=>{
@@ -34,5 +40,5 @@ line.on('onKeyDown',(key)=>{
 });
 
 setInterval(()=>{
-   canvas.render(line);
+   canvas.render(container);
 },300);

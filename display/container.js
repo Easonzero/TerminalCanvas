@@ -8,11 +8,6 @@ class Container extends DisplayObject{
         super(height,width);
         this.children = [];
     }
-    get children(){ return this.children;}
-    set children(children){
-        if(children.length!==0)
-            return;
-    }
 
     addChild(child){
         if(!child) return;
