@@ -1,6 +1,6 @@
 {
   "name": "canvas-terminal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module that is used to create a canvas of the terminal",
   "main": "index.js",
   "scripts": {
