@@ -47,12 +47,27 @@ class Canvas extends EventEmitter{
         if(x>this.canvas[0].length-1||y>this.canvas.length-1) return;
         let result = '';
         char += '';
-        if(char.length>this.emptyGird.length) result = char.substr(0,this.emptyGird.length);
+        if(char.charAt(0)=='@') {
+            let gird='';
+            for(let i=0;i<this.emptyGird.length-1;i++){
+                gird += ' ';
+            }
+            switch (char.charAt(1)){
+                case 'L':
+                    result = char.charAt(2)+gird;
+                    break;
+                case 'R':
+                    result = gird+char.charAt(2);
+                    break;
+            }
+        }
+        else if(char.length>this.emptyGird.length) result = char.substr(0,this.emptyGird.length);
         else{
             let left='',right='';
             for(let i=0;i<this.emptyGird.length-char.length;i++){
                 i%2===0?(right+=' '):(left+=' ');
             }
+
             result = left + char + right;
         }
 
