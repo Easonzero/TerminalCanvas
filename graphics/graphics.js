@@ -17,14 +17,18 @@ class Graphics {
     }
 
     drawPoint(x,y,char){
-        let c_x = Math.ceil(x),
-            c_y = Math.ceil(y),
-            f_x = Math.floor(x),
-            f_y = Math.floor(y);
-        if(c_x!==f_x||c_y!==f_y) {
-            this.o.array[f_y][f_x] = '@R'+char.charAt(0) || '';
+        let r_x = Math.round(x),
+            r_y = Math.round(y);
+        if(r_x>x) {
+            this.o.array[r_y][r_x] = '@L';
+        }else if(r_x<x) {
+            this.o.array[r_y][r_x] = '@R';
+        }else if(r_y>y) {
+            this.o.array[r_y][r_x] = '@U';
+        }else if(r_y<y){
+            this.o.array[r_y][r_x] = '@D';
         }else{
-            this.o.array[c_y][c_x] = char || '';
+            this.o.array[r_y][r_x] = char || '';
         }
     }
 

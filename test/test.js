@@ -15,7 +15,7 @@ let container = new Container(33,33);
 let graphics = new Graphics(11,11);
 graphics.setStyle(FontColor.black,BgColor.cyan);
 graphics.drawPath([
-    [3,9],[4,7]
+    [3,9],[4,5]
 ]);
 
 let line = graphics.toDisplayObject();

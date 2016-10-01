@@ -54,10 +54,16 @@ class Canvas extends EventEmitter{
             }
             switch (char.charAt(1)){
                 case 'L':
-                    result = char.charAt(2)+gird;
+                    result = '|'+gird;
                     break;
                 case 'R':
-                    result = gird+char.charAt(2);
+                    result = gird+'\\';
+                    break;
+                case 'U':
+                    result = '`'+gird;
+                    break;
+                case 'D':
+                    result = '_'+gird;
                     break;
             }
         }
