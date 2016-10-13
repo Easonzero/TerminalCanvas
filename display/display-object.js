@@ -25,23 +25,55 @@ class DisplayObject extends EventEmitter{
 
         this.array = [];
 
-        let i=0;
-
-        while(i < height){
-            this.array[i]=[];
-            let j=0;
-            while(j < width){
-                this.array[i][j]='';
-                j++;
-            }
-            i++;
-        }
+        this.setSize(height,width)
     }
 
     set x(x){this._x = Math.round(x);}
     get x(){return this._x}
     set y(y){this._y = Math.round(y);}
     get y(){return this._y}
+
+    scale(a){
+        let width = Math.round(this.array[0].length*a),
+            height = Math.round(this.array.length*a);
+
+        if(a>1) this.setSize(height,width);
+        let stack = [];
+        let i=0;
+        while(i < height){
+            let j=0;
+            while(j < width){
+                if(this.array[i][j]!==''){
+                    let char = this.array[i][j];
+                    let x = j,y = i;
+                    x = Math.round(a*x);
+                    y = Math.round(a*y);
+                    this.array[i][j]='';
+                    stack.push([x,y,char]);
+                }
+                j++;
+            }
+            i++;
+        }
+        while(stack.length!==0){
+            let ele = stack.pop();
+            this.array[ele[1]][ele[0]] = ele[2];
+        }
+    }
+
+    setSize(height,width){
+        let i=0;
+
+        while(i < height){
+            if(!this.array[i]) this.array[i]=[];
+            let j=0;
+            while(j < width){
+                if(!this.array[i][j]) this.array[i][j]='';
+                j++;
+            }
+            i++;
+        }
+    }
 }
 
 module.exports = DisplayObject;

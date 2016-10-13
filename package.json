@@ -13,7 +13,11 @@
     "url": "git+https://github.com/a451114984/TerminalCanvas.git"
   },
   "keywords": [
-    "node","canvas","terminal","shell","linux"
+    "node",
+    "canvas",
+    "terminal",
+    "shell",
+    "linux"
   ],
   "author": "a451114984",
   "license": "ISC",
@@ -23,6 +27,6 @@
   },
   "homepage": "https://github.com/a451114984/TerminalCanvas#readme",
   "dependencies": {
-    "node-gyp":"3.4.0"
+    "sylvester": "0.0.21"
   }
 }

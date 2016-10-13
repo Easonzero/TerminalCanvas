@@ -8,14 +8,13 @@ const Graphics = require('../index').Graphics;
 const BgColor = require('../index').BgColor;
 const FontColor = require('../index').FontColor;
 
-
 let canvas = new Canvas(33,33);
 let container = new Container(33,33);
 
 let graphics = new Graphics(11,11);
 graphics.setStyle(FontColor.black,BgColor.cyan);
 graphics.drawPath([
-    [3,9],[4,5]
+    [5,1],[7,1]
 ]);
 
 let line = graphics.toDisplayObject();
@@ -26,7 +25,7 @@ line.y = 1;
 line.on('onKeyDown',(key)=>{
     switch (key){
         case 'w':
-            line.y--;
+	        line.scale(2);
             break;
         case 'a':
             line.x--;
@@ -42,5 +41,5 @@ line.on('onKeyDown',(key)=>{
 });
 
 setInterval(()=>{
-    canvas.render(container);
+     canvas.render(container);
 },200);
