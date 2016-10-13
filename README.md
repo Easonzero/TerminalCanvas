@@ -1,5 +1,5 @@
 # TerminalCanvas
-一个用于在linux终端上创建画布的node模块
+一个用于在linux终端上创建画布的node模块,支持事件监听，图形绘制...
 
 ###Installation
 * npm install canvas-terminal [-g]
