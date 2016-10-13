@@ -43,9 +43,12 @@ class Canvas extends EventEmitter{
         }
     }
 
-    setPoint(x,y,char,font,bg,light){
+    setPoint(x,y,char,style){
         if(x>this.canvas[0].length-1||y>this.canvas.length-1) return;
-        let result = '';
+        let result = '',
+            font = style[0][0],
+            bg = style[0][1],
+            light = style[0][2];
         char += '';
         if(char.charAt(0)=='@') {
             let gird='';
@@ -64,6 +67,12 @@ class Canvas extends EventEmitter{
                     break;
                 case 'D':
                     result = '_'+gird;
+                    break;
+                case 'B':
+                    result = gird+' ';
+                    font = style[1][0];
+                    bg = style[1][1];
+                    light = style[1][2];
                     break;
             }
         }
@@ -101,16 +110,16 @@ class Canvas extends EventEmitter{
                 let j = 0;
                 while(j < ele.array[i].length){
                     if(ele.x+j+1 > this.canvas[0].length) break;
-                    if(ele.x+j < 0) {
+                    if(ele.x+j < 0||ele.array[i][j]=='') {
                         j++;
                         continue;
                     }
-                    this.setPoint(ele.x + j,ele.y + i,ele.array[i][j],ele.fontColor,ele.bgColor,ele.light);
+                    this.setPoint(ele.x + j,ele.y + i,ele.array[i][j],[ele.lineStyle,ele.fillStyle]);
                     j++;
                 }
                 i++;
             }
-            if(!ele.children||ele.children.length===0) break;
+            if(!ele.children) continue;
             for(let i in ele.children){
                 queue.unshift(ele.children[i]);
             }

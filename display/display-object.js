@@ -17,9 +17,8 @@ class DisplayObject extends EventEmitter{
         this._x = 0;
         this._y = 0;
 
-        this.fontColor = FontColor.black;
-        this.bgColor = BgColor.white;
-        this.light = Light.true;
+        this.lineStyle = [FontColor.black,BgColor.white,Light.true];
+        this.fillStyle = [];
 
         this.visible = true;
 
@@ -73,6 +72,31 @@ class DisplayObject extends EventEmitter{
             }
             i++;
         }
+    }
+
+    clear(){
+        for(let i in this.array){
+            for(let j in this.array[i]){
+                this.array[i][j]='';
+            }
+        }
+    }
+
+    copy(o){
+        for(let i in o.array){
+            this.array[i] = [];
+            for(let j in o.array[i]){
+                this.array[i][j]=o.array[i][j];
+            }
+        }
+        this.x = o.x;
+        this.y = o.y;
+        this.lineStyle = o.lineStyle;
+        this.fillStyle = o.fillStyle;
+
+        this.visible = o.visible;
+
+        return this;
     }
 }
 
