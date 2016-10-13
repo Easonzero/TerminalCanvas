@@ -13,7 +13,7 @@ let container = new Container(33,33);
 
 let graphics = new Graphics(33,33);
 
-graphics.setStyle(FontColor.black,BgColor.cyan);
+graphics.setLineStyle(FontColor.black,BgColor.cyan);
 graphics.drawPath([
     [5,1],[7,1]
 ]);
