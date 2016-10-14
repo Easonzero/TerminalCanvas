@@ -57,6 +57,7 @@ line.on('onKeyDown',(key)=>{
             break;
         case 'd':
             line.x++;
+            break;
         case 'z':
             line.scale(2);
             break;
