@@ -22,7 +22,7 @@ let graphics = new Graphics();//创建绘图类Graphics
 graphics.setLineStyle(FontColor.black,BgColor.cyan);
 graphics.setFillStyle(FontColor.white,BgColor.black);
 graphics.drawPath([
-    [5,1],[7,1]
+    [5,1],[7,7]
 ]);
 let line = graphics.toDisplayObject();
 
