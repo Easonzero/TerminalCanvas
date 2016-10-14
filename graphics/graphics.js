@@ -98,6 +98,21 @@ class Graphics {
         }
     }
 
+    drawRectangle(x,y,width,height,char,isFill){
+        this.drawLine(x,y,x+width-1,y,char);
+        this.drawLine(x,y,x,y+height-1,char);
+        this.drawLine(x+width-1,y,x+width-1,y+height-1,char);
+        this.drawLine(x,y+height-1,x+width-1,y+height-1,char);
+
+        if(isFill){
+            for(let i=y+1;i<y+height-1;i++){
+                for(let j=x+1;j<x+width-1;j++){
+                    this.drawPoint(j,i,char,isFill);
+                }
+            }
+        }
+    }
+
     circlePlot(xc,yc,x,y,char,isFill){
         this.drawPoint(xc+x,yc+y,char);
         this.drawPoint(xc-x,yc-y,char);

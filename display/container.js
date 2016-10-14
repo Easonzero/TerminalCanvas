@@ -15,6 +15,13 @@ class Container extends DisplayObject{
         child.parent = this;
     }
 
+    addChildren(children){
+        for(let child of children){
+            this.children.push(child);
+            child.parent = this;
+        }
+    }
+
     removeChild(index){
         this.children.splice(index, 1);
     }

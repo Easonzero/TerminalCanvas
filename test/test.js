@@ -28,15 +28,24 @@ graphics.setLineStyle(FontColor.black,BgColor.cyan);
 graphics.drawCycle(10,10,9,' ',true);
 let cycle = graphics.toDisplayObject();
 
+graphics.clear();//清除绘制缓存，准备下次绘制
+
+//绘制一个矩形
+graphics.drawRectangle(2,2,6,4,' ',true);
+let rectangle = graphics.toDisplayObject();
+
 //将线和圆放入container容器中
 container.addChild(cycle);
 container.addChild(line);
+container.addChild(rectangle);
 
 //初始化线和圆的位置
 line.x = 1;
 line.y = 1;
 cycle.x = 10;
 cycle.y = 10;
+rectangle.x = 3;
+rectangle.y = 3;
 
 //初始化线的事件响应
 line.on('onKeyDown',(key)=>{
