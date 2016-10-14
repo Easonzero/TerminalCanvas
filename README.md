@@ -163,10 +163,15 @@ setInterval(()=>{
         <td>@?height int 数据容器的高度<br>@?width int 数据容器的宽度</td>
     </tr>
     <tr>
-        <td>setStyle</td>
-        <td>设置绘制风格</td>
+        <td>setLineStyle</td>
+        <td>设置线的绘制风格</td>
         <td>@font FontColor@bg BgColor@light Light 绘制风格，详见Color部分</td>
     </tr>
+    <tr>
+        <td>setFillStyle</td>
+        <td>设置填充时的绘制风格</td>
+        <td>@font FontColor@bg BgColor@light Light 绘制风格，详见Color部分</td>
+    </tr>    
     <tr>
         <td>drawPoint</td>
         <td>绘制点</td>
@@ -181,6 +186,11 @@ setInterval(()=>{
         <td>drawCycle</td>
         <td>绘制圆</td>
         <td>@xc int@yc int 圆坐标<br>@r int 半径<br>@char string 填充字符<br>isFill 是否使用填充风格</td>
+    </tr>
+    <tr>
+        <td>drawPath</td>
+        <td>绘制路径</td>
+        <td>@points Array 路径节点</td>
     </tr>
     <tr>
         <td>toDisplayObject</td>
