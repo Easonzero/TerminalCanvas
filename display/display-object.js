@@ -7,13 +7,8 @@ const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
 
 class DisplayObject extends EventEmitter{
-    constructor(height,width){
+    constructor(width,height){
         super();
-        if(height<0||width<0) {
-            height=0;width=0;
-        }
-        height = Math.round(height);
-        width = Math.round(width);
         this._x = 0;
         this._y = 0;
 
@@ -24,7 +19,7 @@ class DisplayObject extends EventEmitter{
 
         this.array = [];
 
-        this.setSize(height,width)
+        this.setSize(height||0,width||0);
     }
 
     set x(x){this._x = Math.round(x);}
@@ -33,10 +28,10 @@ class DisplayObject extends EventEmitter{
     get y(){return this._y}
 
     scale(a){
-        let width = Math.round(this.array[0].length*a),
-            height = Math.round(this.array.length*a);
+        let width = Math.round(this.width*a),
+            height = Math.round(this.height*a);
 
-        if(a>1) this.setSize(height,width);
+        this.setSize(height,width);
         let stack = [];
         let i=0;
         while(i < height){
@@ -61,17 +56,33 @@ class DisplayObject extends EventEmitter{
     }
 
     setSize(height,width){
-        let i=0;
+        if(!this.height) this.height = 0;
+        if(!this.width) this.width = 0;
 
-        while(i < height){
-            if(!this.array[i]) this.array[i]=[];
-            let j=0;
+        if(height <= this.height&&width <= this.width) return;
+
+        let i=0;
+        while(i < this.height){
+            let j=this.width;
             while(j < width){
-                if(!this.array[i][j]) this.array[i][j]='';
+                this.array[i][j]='';
                 j++;
             }
             i++;
         }
+
+        while(i < height){
+            this.array[i]=[];
+            let j=0;
+            while(j < width){
+                this.array[i][j]='';
+                j++;
+            }
+            i++;
+        }
+
+        this.height = Math.max(this.height,height);
+        this.width = Math.max(this.width,width);
     }
 
     clear(){
@@ -89,11 +100,14 @@ class DisplayObject extends EventEmitter{
                 this.array[i][j]=o.array[i][j];
             }
         }
+
         this.x = o.x;
         this.y = o.y;
+        this.height = o.height;
+        this.width = o.width;
+
         this.lineStyle = o.lineStyle;
         this.fillStyle = o.fillStyle;
-
         this.visible = o.visible;
 
         return this;

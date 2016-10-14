@@ -23,7 +23,7 @@ class Canvas extends EventEmitter{
             while(queue.length!==0){
                 let ele = queue.pop();
                 ele.emit('onKeyDown',chunk);
-                if(!ele.children||ele.children.length===0) break;
+                if(!ele.children||ele.children.length===0) continue;
                 for(let i in ele.children){
                     queue.unshift(ele.children[i]);
                 }

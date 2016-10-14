@@ -9,11 +9,12 @@ const BgColor = require('../index').BgColor;
 const FontColor = require('../index').FontColor;
 
 let canvas = new Canvas(33,33);
-let container = new Container(33,33);
+let container = new Container();
 
-let graphics = new Graphics(33,33);
+let graphics = new Graphics();
 
 graphics.setLineStyle(FontColor.black,BgColor.cyan);
+graphics.setFillStyle(FontColor.white,BgColor.black);
 graphics.drawPath([
     [5,1],[7,1]
 ]);
@@ -22,14 +23,15 @@ let line = graphics.toDisplayObject();
 graphics.clear();
 
 graphics.setLineStyle(FontColor.black,BgColor.cyan);
-graphics.drawCycle(10,10,9);
+graphics.drawCycle(10,10,9,' ',true);
 let cycle = graphics.toDisplayObject();
 
-container.addChild(line);
 container.addChild(cycle);
+container.addChild(line);
 
 line.x = 1;
 line.y = 1;
+
 line.on('onKeyDown',(key)=>{
     switch (key){
         case 'w':

@@ -7,8 +7,8 @@ const FontColor = require('./../define/color').FontColor;
 const Light = require('./../define/color').Light;
 
 class Graphics {
-    constructor(height,width){
-        this.o = new DisplayObject(height,width);
+    constructor(){
+        this.o = new DisplayObject();
     }
 
     setLineStyle(font,bg,light){
@@ -22,6 +22,9 @@ class Graphics {
     drawPoint(x,y,char,isFill){
         let r_x = Math.round(x),
             r_y = Math.round(y);
+
+        this.o.setSize(r_y+1,r_x+1);
+
         if(isFill){
             this.o.array[r_y][r_x] = '@B';
         }
@@ -106,7 +109,18 @@ class Graphics {
         this.drawPoint(xc-y,yc+x,char);
 
         if(isFill){
-
+            for(let i=x-1;i>-x;i--){
+                this.drawPoint(xc+i,yc+y-1,char,isFill);
+                this.drawPoint(xc+i,yc-y+1,char,isFill);
+                this.drawPoint(xc+y-1,yc+i,char,isFill);
+                this.drawPoint(xc-y+1,yc+i,char,isFill);
+            }
+            for(let i=y-1;i>-y;i--){
+                this.drawPoint(xc+i,yc+x-1,char,isFill);
+                this.drawPoint(xc+i,yc-x+1,char,isFill);
+                this.drawPoint(xc+x,yc+i,char,isFill);
+                this.drawPoint(xc-x,yc+i,char,isFill);
+            }
         }
     }
 
