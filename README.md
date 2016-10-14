@@ -8,22 +8,46 @@
 
 ```javascript
 const Canvas = require('../index').Canvas;
+const Container = require('../index').Container;
 const Graphics = require('../index').Graphics;
 const BgColor = require('../index').BgColor;
 const FontColor = require('../index').FontColor;
 
-
 let canvas = new Canvas(33,33);
-let graphics = new Graphics(11,11);
-graphics.setStyle(FontColor.black,BgColor.cyan);
-graphics.drawLine(0,0,10,10);
+let container = new Container();
+
+let graphics = new Graphics();//创建绘图类Graphics
+
+//绘制一条线
+graphics.setLineStyle(FontColor.black,BgColor.cyan);
+graphics.setFillStyle(FontColor.white,BgColor.black);
+graphics.drawPath([
+    [5,1],[7,1]
+]);
 let line = graphics.toDisplayObject();
+
+graphics.clear();//清除绘制缓存，准备下次绘制
+
+//绘制一个圆
+graphics.setLineStyle(FontColor.black,BgColor.cyan);
+graphics.drawCycle(10,10,9,' ',true);
+let cycle = graphics.toDisplayObject();
+
+//将线和圆放入container容器中
+container.addChild(cycle);
+container.addChild(line);
+
+//初始化线和圆的位置
 line.x = 1;
 line.y = 1;
+cycle.x = 10;
+cycle.y = 10;
+
+//初始化线的事件响应
 line.on('onKeyDown',(key)=>{
     switch (key){
         case 'w':
-            line.y--;
+	        line.y--;
             break;
         case 'a':
             line.x--;
@@ -33,21 +57,25 @@ line.on('onKeyDown',(key)=>{
             break;
         case 'd':
             line.x++;
+        case 'z':
+            line.scale(2);
             break;
 
     }
 });
 
+//初始化渲染循环
 setInterval(()=>{
-   canvas.render(line);
-},300);
+     canvas.render(container);
+},200);
+
 ```
 简单说明:   
 `Canvas`是核心类,负责将数据渲染到terminal上.`Container`是容器类,负责承载数据.`Graphics`是绘制类,负责通过内部方法生成图像数据.
 
 框架通常的使用流程是:
 * 创建一个固定长宽的`Canvas`类实例
-* 创建一个固定长宽的`Container`类实例
+* 创建一个`Container`类实例
 * 通过`Graphics`类创建出各种图像数据,并放入`Container`容器实例中
 * 最后将`Container`实例交给`Canvas`实例渲染即可.
 
@@ -104,8 +132,8 @@ setInterval(()=>{
 <table>
     <tr>
         <td>constructor</td>
-        <td>结构体，创建一个固定大小的数据容器</td>
-        <td>@height int 数据容器的高度<br>@width int 数据容器的宽度</td>
+        <td>结构体</td>
+        <td>@?height int 数据容器的高度<br>@?width int 数据容器的宽度</td>
     </tr>
     <tr>
         <td>addChild</td>
@@ -131,8 +159,8 @@ setInterval(()=>{
 <table>
     <tr>
         <td>constructor</td>
-        <td>结构体，创建一个固定大小的数据容器</td>
-        <td>@height int 数据容器的高度<br>@width int 数据容器的宽度</td>
+        <td>结构体</td>
+        <td>@?height int 数据容器的高度<br>@?width int 数据容器的宽度</td>
     </tr>
     <tr>
         <td>setStyle</td>
@@ -142,12 +170,17 @@ setInterval(()=>{
     <tr>
         <td>drawPoint</td>
         <td>绘制点</td>
-        <td>@x int@y int 点坐标<br>@char string 绘制字符 </td>
+        <td>@x int@y int 点坐标<br>@char string 绘制字符<br>@?isFill 是否使用填充风格</td>
     </tr>
     <tr>
         <td>drawLine</td>
         <td>绘制直线</td>
         <td>@x0 int@y0 int 起点坐标<br>@x int@y int 终点坐标</td>
+    </tr>
+    <tr>
+        <td>drawCycle</td>
+        <td>绘制圆</td>
+        <td>@xc int@yc int 圆坐标<br>@r int 半径<br>@char string 填充字符<br>isFill 是否使用填充风格</td>
     </tr>
     <tr>
         <td>toDisplayObject</td>
@@ -171,19 +204,24 @@ setInterval(()=>{
         <td>纵坐标</td>
     </tr>
     <tr>
-        <td>fontColor</td>
-        <td>FontColor</td>
-        <td>字色，默认黑色</td>
+        <td>fillStyle</td>
+        <td>Array</td>
+        <td>填充风格，数组内容为[FontColor,BgColor,Light]</td>
     </tr>
     <tr>
-        <td>bgColor</td>
-        <td>BgColor</td>
-        <td>背景色，默认白色</td>
+        <td>lineStyle</td>
+        <td>Array</td>
+        <td>线风格，数组内容为[FontColor,BgColor,Light]</td>
     </tr>
     <tr>
-        <td>light</td>
-        <td>Light</td>
-        <td>是否高亮，默认高亮</td>
+        <td>height</td>
+        <td>int</td>
+        <td>容器高度</td>
+    </tr>
+    <tr>
+        <td>width</td>
+        <td>int</td>
+        <td>容器宽度</td>
     </tr>
     <tr>
         <td>visible</td>
@@ -197,14 +235,29 @@ setInterval(()=>{
 <table>
     <tr>
         <td>constructor</td>
-        <td>结构体，创建一个固定大小的数据容器</td>
-        <td>@height int 数据容器的高度<br>@width int 数据容器的宽度</td>
+        <td>结构体</td>
+        <td>@?height int 数据容器的高度<br>@?width int 数据容器的宽度</td>
     </tr>
     <tr>
         <td>on</td>
         <td>设置监听器</td>
         <td>@event string 监听事件,目前可以监听事件有@onKeyDown，<br>回调参数是按下的按键值<br>@callback function 回调函数</td>
-    </tr>    
+    </tr>  
+    <tr>
+        <td>clear</td>
+        <td>清空数据</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>copy</td>
+        <td>拷贝函数</td>
+        <td>@o DisplayObject 拷贝的对象</td>
+    </tr>
+    <tr>
+        <td>scale</td>
+        <td>放缩函数</td>
+        <td>@a int 放缩倍数</td>
+    </tr>
 </table>
 
 ####`Color`
