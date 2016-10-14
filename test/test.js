@@ -35,7 +35,7 @@ line.y = 1;
 line.on('onKeyDown',(key)=>{
     switch (key){
         case 'w':
-	        line.scale(2);
+	        line.y--;
             break;
         case 'a':
             line.x--;
@@ -45,6 +45,8 @@ line.on('onKeyDown',(key)=>{
             break;
         case 'd':
             line.x++;
+        case 'z':
+            line.scale(2);
             break;
 
     }
