@@ -2,9 +2,7 @@
  * Created by eason on 16-9-27.
  */
 const EventEmitter = require('events').EventEmitter;
-const BgColor = require('./../define/color').BgColor;
-const FontColor = require('./../define/color').FontColor;
-const Light = require('./../define/color').Light;
+const {BgColor,FontColor,Light} = require('../define/color');
 
 class DisplayObject extends EventEmitter{
     constructor(width,height){

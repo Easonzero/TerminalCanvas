@@ -4,9 +4,7 @@
 const Canvas = require('./core/canvas');
 const Container = require('./display/container');
 const Graphics = require('./graphics/graphics');
-const BgColor = require('./define/color').BgColor;
-const FontColor = require('./define/color').FontColor;
-const Light = require('./define/color').Light;
+const {BgColor,FontColor,Light} = require('./define/color');
 
 let TC = {};
 TC.Canvas = Canvas;

@@ -2,9 +2,7 @@
  * Created by eason on 16-9-27.
  */
 const DisplayObject = require('../display/display-object');
-const BgColor = require('./../define/color').BgColor;
-const FontColor = require('./../define/color').FontColor;
-const Light = require('./../define/color').Light;
+const {BgColor,FontColor,Light} = require('../define/color');
 
 class Graphics {
     constructor(){
