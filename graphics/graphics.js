@@ -40,13 +40,11 @@ class Graphics {
     }
 
     drawLine(x0,y0,x,y,char){
-        if(x<x0) {
+        if(y<y0) {
             let term = x;
             x = x0;
             x0 = term;
-        }
-        if(y<y0) {
-            let term = y;
+            term = y;
             y = y0;
             y0 = term;
         }
