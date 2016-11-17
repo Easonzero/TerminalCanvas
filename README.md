@@ -189,12 +189,12 @@ setInterval(()=>{
     <tr>
         <td>drawRectangle</td>
         <td>绘制矩形</td>
-        <td>@x0 int@y0 int 左上角顶点坐标<br>@width int@height int 宽高<br>@char string 填充字符<br>isFill 是否使用填充风格</td>
+        <td>@x0 int@y0 int 左上角顶点坐标<br>@width int@height int 宽高<br>@char string 填充字符<br>@isFill 是否使用填充风格</td>
     </tr>
     <tr>
         <td>drawCycle</td>
         <td>绘制圆</td>
-        <td>@xc int@yc int 圆坐标<br>@r int 半径<br>@char string 填充字符<br>isFill 是否使用填充风格</td>
+        <td>@xc int@yc int 圆坐标<br>@r int 半径<br>@char string 填充字符<br>@isFill 是否使用填充风格</td>
     </tr>
     <tr>
         <td>drawPath</td>
