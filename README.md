@@ -1,10 +1,10 @@
 # TerminalCanvas
 一个用于在linux终端上创建画布的node模块,支持事件监听，图形绘制...
 
-###Installation
+### Installation
 * npm install canvas-terminal [-g]
 
-###Getting Started
+### Getting Started
 
 ```javascript
 const Canvas = require('../index').Canvas;
@@ -83,8 +83,8 @@ setInterval(()=>{
 * 通过`Graphics`类创建出各种图像数据,并放入`Container`容器实例中
 * 最后将`Container`实例交给`Canvas`实例渲染即可.
 
-###API
-####`Canvas` extends `EventEmitter`
+### API
+#### `Canvas` extends `EventEmitter`
 * 属性
 
 <table>
@@ -120,7 +120,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####`Container` extends `DisplayObject`
+#### `Container` extends `DisplayObject`
 * 属性
 
 <table>
@@ -156,7 +156,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####`Graphics`
+#### `Graphics`
 
 * 方法
 
@@ -208,7 +208,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####`DisplayObject` extends `EventEmitter`
+#### `DisplayObject` extends `EventEmitter`
 * 属性
 
 <table>
@@ -279,7 +279,7 @@ setInterval(()=>{
     </tr>
 </table>
 
-####`Color`
+#### `Color`
 <table>
     <tr>
         <td>FontColor</td>
