@@ -1,4 +1,8 @@
 # TerminalCanvas
+
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+[![Badge](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu/#/zh_CN)
+
 一个用于在linux终端上创建画布的node模块,支持事件监听，图形绘制...
 
 ### Installation
